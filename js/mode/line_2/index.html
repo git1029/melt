@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Line 2</title>
+    <link rel="stylesheet" href="../../../css/_base.css" />
+    <link rel="stylesheet" href="../../../css/style.css" />
+  </head>
+  <body>
+    <ul>
+      <li><a href="../noise_1/">Noise 1</a></li>
+      <li><a href="../noise_2/">Noise 2</a></li>
+      <li><a href="../noise_3/">Noise 3</a></li>
+      <li><a href="../line_1/">Line 1</a></li>
+      <li><a class="selected" href="../line_2/">Line 2</a></li>
+      <!-- <li><a href="js/mode/physics_2/">Physics 2</a></li> -->
+      <li><a href="../physics_1/">Physics 1</a></li>
+    </ul>
+
+    <svg
+      id="svgPath"
+      width="2440"
+      height="2440"
+      viewBox="0 0 2440 2440"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M500 1473.5H295V969.5H570L604 1128H628.5L661 969.5H936V1473.5H729.5M500 1473.5L478 1317.5M500 1473.5H729.5M754.5 1317.5L729.5 1473.5"
+        stroke="#FF0000"
+        stroke-width="5"
+      />
+      <path
+        d="M1334.5 1158V969.5H936V1473.5H1334.5V1282.5M1334.5 1158H1162M1334.5 1158V1282.5M1162 1282.5H1334.5"
+        stroke="#FF0000"
+        stroke-width="5"
+      />
+      <path
+        d="M2144.5 969.5H1619V1158H1750V1473.5H2013.5V1158H2144.5V969.5Z"
+        stroke="#FF0000"
+        stroke-width="5"
+      />
+      <path
+        d="M1334.5 969.5V1473.5H1750V1282.5H1619V969.5H1334.5Z"
+        stroke="#FF0000"
+        stroke-width="5"
+      />
+    </svg>
+
+    <script src="../../utils/p5.min.js"></script>
+    <script src="../../utils/CCapture.all.min.js"></script>
+    <script src="../../utils/matrix.js"></script>
+    <script src="../../utils/easing.js"></script>
+    <script src="../../utils/OpenSimplexNoise.js"></script>
+    <script src="../../utils/path-data-polyfill.js"></script>
+    <script src="../../utils/svgPath.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
