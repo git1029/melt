@@ -50,16 +50,31 @@ function draw() {
   // stroke("red");
   // ellipse(mouseX, mouseY, r, r);
 
-  stroke(255);
-  strokeWeight(8);
-  noFill();
   pts.paths.forEach((group) => {
     group.forEach((path) => {
       beginShape();
-      path.pointsFinal.forEach((p) => p.run());
+      path.pointsFinal.forEach((p) => p.update());
       endShape(CLOSE);
     });
   });
+
+  stroke(255);
+  strokeWeight(8);
+  noFill();
+  let n = 1;
+  for (let i = 0; i < n; i++) {
+    let col = color((i * 40 * (8 / n)) % 360, 100, 50);
+    stroke(col);
+    if (i === n - 1) stroke("white");
+    fill("red");
+    pts.paths.forEach((group) => {
+      group.forEach((path) => {
+        beginShape();
+        path.pointsFinal.forEach((p) => p.display());
+        endShape(CLOSE);
+      });
+    });
+  }
 
   let pf = "";
   if (frameCount < 10) pf = "000";
@@ -100,10 +115,10 @@ class Point {
     curveVertex(this.q.x, this.q.y);
   };
 
-  run = () => {
-    this.update();
-    this.display();
-  };
+  // run = (i) => {
+  //   this.update(i);
+  //   this.display();
+  // };
 }
 
 // const drawVertex = (p, pos, pp) => {

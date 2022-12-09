@@ -86,7 +86,7 @@ function draw() {
 const trail = (p, i, pos_, c, n) => {
   let loopDuration = 9 * 60;
   let pos = pos_;
-  // pos = pts.p;
+  pos = pts.p;
   let off = (p.y - pos.mid.y) * 0.5 + i * 2;
   off *= loopDuration / (6 * 60);
   let t = ((frameCount + off) % loopDuration) / loopDuration;
