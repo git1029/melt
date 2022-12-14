@@ -17,7 +17,7 @@ function setup() {
   strokeCap(ROUND);
 
   pts = new Points({
-    id: "svgPath2",
+    id: "svgPath3",
     sampleFactor: 4,
     sampleDistance: 4,
     scl: 0.5,
@@ -66,7 +66,7 @@ function draw() {
     let col = color((i * 40 * (8 / n)) % 360, 100, 50);
     stroke(col);
     if (i === n - 1) stroke("white");
-    fill("red");
+    // fill("red");
     pts.paths.forEach((group) => {
       group.forEach((path) => {
         beginShape();
