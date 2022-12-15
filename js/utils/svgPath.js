@@ -39,6 +39,7 @@ const getSVGPaths = ({
   let str = "MELT";
   if (id === "svgPath2") str = "MELT11111";
   if (id === "svgPath3") str = "MELT1111";
+  if (id === "svgPath4") str = "M11E11LT";
   let svgPathsAll = svg.querySelectorAll("path");
   let svgGroups = [];
   let j = 0;

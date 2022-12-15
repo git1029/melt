@@ -173,6 +173,12 @@ class Points_ {
       beginShape();
       path.forEach((p) => p.display2());
       endShape();
+
+      // stroke(100);
+      // strokeWeight(8);
+      // beginShape();
+      // path.forEach((p) => p.display3());
+      // endShape();
     });
     // endShape();
   }
@@ -181,7 +187,7 @@ class Points_ {
     // this.points = font.textToPoints(text, 0, 0, size, { sampleFactor });
 
     const pts = new Points({
-      id: "svgPath2",
+      id: "svgPath4",
       sampleFactor: 1,
       sampleDistance: 4,
       scl: 0.5,
@@ -280,7 +286,7 @@ class Point {
     this.animate = false;
     this.animateDur = 2 * 60;
 
-    this.history = [];
+    this.history = [this.pStart];
 
     this.j = j;
     this.k = k;
@@ -295,10 +301,16 @@ class Point {
       // point(this.q.x, this.q.y);
     }
 
+    let k = this.k;
+    if (this.k < 3) k = 0;
+    else if (this.k < 6) k = 1;
+    else if (this.k < 7) k = 2;
+    else if (this.k < 8) k = 3;
+
     let h =
       floor(
         map(
-          noise(this.noiseX + this.j * 0.1 + this.k, this.noiseY + this.k),
+          noise(this.noiseX + this.j * 0.1 + k, this.noiseY + this.k),
           0,
           1,
           0,
@@ -338,6 +350,9 @@ class Point {
   display2() {
     vertex(this.p.x, this.p.y);
   }
+  display3() {
+    vertex(this.pStart.x, this.pStart.y);
+  }
 
   check() {
     let d = dist(this.p.x, this.p.y, mouseX, mouseY);
@@ -356,7 +371,7 @@ class Point {
       this.move = false;
     }
     if (this.animate && frameCount > this.startMove + this.animateDur) {
-      this.history = [];
+      this.history = [this.pStart];
       this.animate = false;
     }
 
@@ -365,10 +380,10 @@ class Point {
     this.f = move ? 1 : 0;
     // this.f = 1;
 
-    let dx = constrain(abs(mouseX - this.p.x), 0, this.bounds.w / 2);
-    this.fx = map(dx, 0, this.bounds.w / 2, 1, 0);
+    let dx = constrain(abs(mouseX - this.p.x), 0, this.bounds.w / 4);
+    this.fx = map(dx, 0, this.bounds.w / 4, 1, 0);
     this.fx = easeInOutCubic(this.fx);
-    this.fx = map(this.fx, 1, 0, 1, 0.25);
+    this.fx = map(this.fx, 1, 0, 1, 0.1);
   }
 
   update() {
@@ -382,10 +397,13 @@ class Point {
 
     // f = 1;
 
-    let dir = this.move ? 1 : -1;
+    // let dir = this.move ? 1 : -1;
+    let dir = map(this.p.x, this.pos.min.x, this.pos.max.x, 0, 1);
+    dir = sin(dir * TWO_PI);
     dir = 1;
 
     let fy = map(this.pStart.y, this.pos.min.y, this.pos.max.y, 0, 1);
+    // fy = sin(fy * TWO_PI);
 
     // let newPX =
     this.p.x +=
