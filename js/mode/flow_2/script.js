@@ -372,6 +372,7 @@ class Point {
     }
     if (this.animate && frameCount > this.startMove + this.animateDur) {
       this.history = [this.pStart];
+      // if (this.j === 0) console.log("CLEARING HISTORY", this.history.length);
       this.animate = false;
     }
 
@@ -488,6 +489,8 @@ class Point {
     if (this.move) {
       this.history.push(createVector(this.p.x, this.p.y));
     }
+
+    // if (this.j === 0) console.log(this.history.length);
   }
 }
 
